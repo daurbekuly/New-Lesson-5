@@ -10,6 +10,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     Button button0, button1, button2, button3, button4, button5, button6, button7, button8, button9;
+    Button btnClear, btnPlusMinus;
     TextView tvNumber;
 
     @Override
@@ -25,63 +26,111 @@ public class MainActivity extends AppCompatActivity {
         button6 = findViewById(R.id.btn6);
         button7 = findViewById(R.id.btn7);
         button8 = findViewById(R.id.btn8);
+        button9 = findViewById(R.id.btn9);
+
+        btnClear = findViewById(R.id.btnClear);
+        btnPlusMinus = findViewById(R.id.btnPlusMinus);
+
         tvNumber = findViewById(R.id.tv_number);
-        button7.setOnClickListener(new View.OnClickListener() {
+
+
+        View.OnClickListener button_numbers = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tvNumber.setText("7");
+
+                String prevNumber = tvNumber.getText().toString();
+                String pressedNumber = "";
+                String resultNumber = "";
+
+                switch(v.getId()){
+                    case R.id.btn1:
+                        pressedNumber = "1";
+
+                        break;
+                    case R.id.btn2:
+                        pressedNumber = "2";
+
+                        break;
+                    case R.id.btn3:
+                        pressedNumber = "3";
+
+                        break;
+                    case R.id.btn4:
+                        pressedNumber = "4";
+
+                        break;
+                    case R.id.btn5:
+                        pressedNumber = "5";
+
+                        break;
+                    case R.id.btn6:
+                        pressedNumber = "6";
+
+
+                        break;
+                    case R.id.btn7:
+                        pressedNumber = "7";
+
+                        break;
+                    case R.id.btn8:
+                        pressedNumber = "8";
+
+                        break;
+
+                    case R.id.btn9:
+                        pressedNumber = "9";
+
+
+                        break;
+                    case R.id.btn0:
+                        pressedNumber = "0";
+
+
+                        break;
+                }
+                if(!prevNumber.equals("0")) resultNumber = prevNumber + pressedNumber;
+                else resultNumber = pressedNumber;
+                tvNumber.setText(resultNumber);
             }
-        });
-        button8.setOnClickListener(new View.OnClickListener() {
+        };
+
+        button1.setOnClickListener(button_numbers);
+        button2.setOnClickListener(button_numbers);
+        button3.setOnClickListener(button_numbers);
+        button4.setOnClickListener(button_numbers);
+        button5.setOnClickListener(button_numbers);
+        button6.setOnClickListener(button_numbers);
+        button7.setOnClickListener(button_numbers);
+        button8.setOnClickListener(button_numbers);
+        button9.setOnClickListener(button_numbers);
+        button0.setOnClickListener(button_numbers);
+
+        View.OnClickListener btnClearPlusMinus = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tvNumber.setText("8");
+                switch (v.getId()){
+                    case R.id.btnClear:
+
+                        tvNumber.setText("0");
+                        break;
+                    case R.id.btnPlusMinus:
+                        String numberText = tvNumber.getText().toString();
+                        int number = Integer.parseInt(numberText);
+
+                        if (number > 0)
+                            tvNumber.setText("-"+numberText);
+
+                        else{
+                            number = number * (-1);
+                            tvNumber.setText("" + number);
+                        }
+
+                        break;
+                }
             }
-        });
-        button9.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tvNumber.setText("9");
-            }
-        });
-        button4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tvNumber.setText("4");
-            }
-        });
-        button5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tvNumber.setText("5");
-            }
-        });
-        button6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tvNumber.setText("6");
-            }
-        });button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tvNumber.setText("1");
-            }
-        });button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tvNumber.setText("2");
-            }
-        });button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tvNumber.setText("3");
-            }
-        });button0.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tvNumber.setText("0");
-            }
-        });
+        };
+        btnClear.setOnClickListener(btnClearPlusMinus);
+        btnPlusMinus.setOnClickListener(btnClearPlusMinus);
 
 
     }

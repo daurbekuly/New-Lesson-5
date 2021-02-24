@@ -24,11 +24,13 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/btnClear"
             style="@style/button_func_style"
             android:text="C"
             />
 
         <Button
+            android:id="@+id/btnPlusMinus"
             style="@style/button_func_style"
             android:text="+/-"/>
 
@@ -144,13 +146,8 @@
             android:text="."/>
 
         <Button
-            android:id="@+id/btn_space"
-            style="@style/button_number_style"
-            android:text=" "/>
-
-        <Button
             android:id="@+id/btn_equal"
-            style="@style/button_func_style"
+            style="@style/button_equal_style"
             android:text="="/>
 
     </LinearLayout>
